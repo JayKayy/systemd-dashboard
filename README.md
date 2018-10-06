@@ -1,3 +1,2 @@
-# systemd_dashboard
+# go_systemd_api
 
-Display status of systemd service(s) 

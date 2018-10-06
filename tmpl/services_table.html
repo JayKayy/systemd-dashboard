@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<body>
+
+<h2>Service Dashboard</h2>
+
+<table style="width:80%">
+  <tr>
+    <th>Service</th>
+    <th>Status</th> 
+    <th>Enabled</th> 
+  </tr>
+  {{ range $k, $v := . }}
+  <tr>
+    <td>{{ index $v "Id" }}</td>
+    <td>{{ index $v "ActiveState" }}</td>
+    <td>{{ index $v "UnitFileState" }}</td>
+  </tr>
+  {{ end }}
+ </table>
+
+</body>
+</html>
+
