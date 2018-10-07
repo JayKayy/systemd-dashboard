@@ -13,6 +13,28 @@ td, th {
     text-align: left;
     padding: 8px;
 }
+a {
+    color:black;
+    text-decoration:none;
+}
+#info1{
+	position:absolute;
+	display:none;
+        top:200px;
+	z-index:9;
+	color:red;
+}
+#info1:target {
+
+display:block;
+}
+a:hover {
+  color: white;
+}
+table.servicesTable  td:hover {
+    background-color:green;
+    color:green;
+}
 
 tr:nth-child(even) {
     background-color: #dddddd;
@@ -22,7 +44,7 @@ tr:nth-child(even) {
 
 <h2>Service Dashboard</h2>
 
-<table style="width:80%">
+<table class='servicesTable' style="width:80%">
   <tr>
     <th>Service</th>
     <th>Status</th> 
@@ -31,12 +53,20 @@ tr:nth-child(even) {
   {{ range $k, $v := . }}
   <tr>
     <td>{{ index $v "Id" }}</td>
-    <td>{{ index $v "ActiveState" }}</td>
+    <td id="statustd" onClick="document.location.href='#info1';">
+	    <a href='#info1' class='cell1'>{{ index $v "ActiveState" }}</a>
+	    <div id=info1><h3>More Info</h3>
+		    <p>Service {{ index $v "Id" }} is in  {{ index $v "ActiveState" }} state."</p>
+		    <p>{{ $v }}
+	    </div>
+    </td>
     <td>{{ index $v "UnitFileState" }}</td>
   </tr>
   {{ end }}
  </table>
 
+
+ </div>
 </body>
 </html>
 
